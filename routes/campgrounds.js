@@ -57,14 +57,14 @@ router.get("/:id", function(req, res) {
     });
 });
 
-//EDIT campground route 
+//EDIT campground route
 router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res) {
     Campground.findById(req.params.id, function(err, foundCampground) {
         res.render("campgrounds/edit", { campground: foundCampground });
     });
 });
 
-//UPDATE campground route 
+//UPDATE campground route
 
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res) {
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground) {
